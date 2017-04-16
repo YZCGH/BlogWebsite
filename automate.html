@@ -1,0 +1,361 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta http-equiv="Content-type" content="text/html;charset=UTF-8">
+	<meta name="description" content="自动化测试">
+	<meta name="keywords" content="lua,sikuli">
+	<meta name="author" content="ZCYang">
+	<link rel="stylesheet" href="css/tech.css">
+	<link rel="stylesheet" href="css/common.css">
+	<title>杨智超的独立博客</title>  
+</head>
+<body>
+	<aside>
+		<ul>
+			<h2>lua脚本</h2>
+			<li><a href="#LuaPage1">lua标准库—表处理</a></li>
+			<li><a href="#LuaPage2">lua标准库—字符串处理</a></li>
+			<li><a href="#LuaPage3">lua标准库—基本函数</a></li>
+			<li><a href="#LuaPage4">lua标准库—输入输出处理</a></li>
+			<li><a href="#LuaPage5">lua标准库—操作系统处理</a></li>
+		</ul>
+
+		<ul>
+			<h2>Sikuli自动监控电脑画面</h2>
+			<li><a href="#SikuliPage1">安装开发软件</a></li>
+			<li><a href="#SikuliPage2">建立工程</a></li>
+			<li><a href="#SikuliPage3">sikuli语法</a></li>
+			<li><a href="#SikuliPage4">实际应用</a></li>
+		</ul>
+	</aside>
+
+	<section>
+		<div id="lua">
+			<div class="common-div">
+				<h3 id="LuaPage1">lua标准库—表处理</h3>
+					<pre>
+	>>table.insert(table, [pos,] value)
+		功能：在指定的索引位置pos插入值value,
+		并将pos后的元素往后移,
+		pos默认为表的长度加1(即table.insert(t,x)将x添加到表的尾部)
+
+	>>table.maxn(table)或table.getn(table)
+		功能：返回表最后一个不为nil的索引值
+
+	>>table.remove (table [, pos])
+		功能：删除指定索引位置的值并使索引后的值向前移，
+		成功则返回被删除的索引位置的值;
+		pos默认为表的长度(即默认情况下为删除表最后一个元素)
+
+	>>table.sort (table [, comp])
+		功能：将表中的值按comp提供的函数进行排序,默认comp为Lua操作符
+		comp为lua函数，当参数1小于参数2时返回true,否则返回false
+
+	>>table.concat (table [, sep [, i [, j]]])
+		功能：返回用sep连接表中的字串,sep默认为空字串,
+		i默认为1,j默认为表的长度，如果i大于j则返回空字串
+					</pre>
+			</div>
+
+			<div class="common-div">
+				<h3 id="LuaPage2">lua标准库—字符串处理</h3>
+					<pre>
+	>>string.byte(s [, i [, j]])
+		功能：返回从i到j的字符所对应的数值字符到ASCII值,
+		i默认为1,j默认为i的值
+
+	>>string.char (···)
+		功能：返回ASCII值参数对应的字符串
+
+	>>string.format (formatstring, ···)
+		功能：格式化字符串formatstring参数
+
+	>>string.gmatch(s, pattern)			
+		功能：返回一个迭代函数，每次调用此函数，
+		将返回下一个查找到的样式串对应的字符
+
+	>>string.sub(s,i,j)
+		功能：截取字符串s的从第i个字符到第j个字符之间的串，
+		-1指向最后一个字符，-2指向倒数第二个字符
+
+	>>string.gsub (s, pattern, repl [, n])
+		功能：返回一个经repl替换pattern的字符串及替换的次数
+		s:待替换的字串
+		pattern:查找的字串
+		repl:要替换的内容(可以为字串，表，函数)
+		当repl为字符串时：进行对应字串的替换
+		n:可选参数，用来限制替换的范围 为1表示替换1次，为2表示替换2次，以此类推
+
+	>>string.find(s, pattern [, init])
+		功能：查找s中首次出现pattern的位置,
+		如果找到则返回首次出现的起始和结束索引否则返回nil
+		init:为搜索位置的起始索引，默认为1(也可以用负索引法表示)
+		以'^'开头的模式只匹配目标串的开始部分
+		以'$'结尾的模式只匹配目标串的结尾部分
+
+	>>string.lower(s)
+		功能：将s中的大写字母转换成小写
+
+	>>string.upper(s)
+		功能：将s中的小写字母转换成大写
+
+	>>string.len(s)
+		功能：返回字符串S的长度
+					</pre>
+			</div>
+
+			<div class="common-div">
+				<h3 id="LuaPage3">lua标准库—基本函数</h3>
+					<pre>
+	>>ipairs (t)
+		功能：返回三个值 迭代函数、表、0
+		如：for i,v in ipairs(t) do  end
+		每次循环将索引赋级i，键值赋给v
+		注：本函数只能用于以数字索引访问的表 如：t={"1","2"}
+
+	>>pairs(t)
+		功能：返回三个值 迭代函数、表、0
+		如：for i,v in pairs(t) do end
+		每次循环将索引赋级i，键值赋给v
+		可以用来索引非数字key的表，如t={"1",["a"]="cash"}
+
+	>>print (···)
+		功能：简单的以tostring方式格式化输出参数的内容
+
+	>>assert (v [, message])
+		功能：相当于C的断言，
+		参数：v：当表达式v为nil或false将触发错误,
+		message：发生错误时返回的信息，默认为"assertion failed!"
+					</pre>
+			</div>
+
+			<div class="common-div">
+				<h3 id="LuaPage4">lua标准库—输入输出处理</h3>
+					<pre>
+	>>io.open (filename [, mode])
+		功能：按指定的模式打开一个文件，
+		成功则返回文件句柄，失败则返回nil+错误信息
+		mode:
+		"r": 读模式 (默认);
+		"w": 写模式;
+		"a": 添加模式;
+		"r+": 更新模式，所有之前的数据将被保存
+		"w+": 更新模式，所有之前的数据将被清除
+		"a+": 添加更新模式，所有之前的数据将被保存,只允许在文件尾进行添加
+		"b": 某些系统支持二进制方式
+
+	>>io.close ([file])
+		功能：相当于file:close()，关闭默认的输出文件
+
+	>>io.lines ([filename])
+		功能：打开指定的文件filename为读模式并返回一个迭代函数,
+		每次调用将获得文件中的一行内容,当到文件尾时，
+		将返回nil,并自动关闭文件
+		若不带参数时io.lines() = io.input():lines(); 
+		读取默认输入设备的内容，但结束时不关闭文件
+		如：for line in io.lines("main.lua") do
+		print(line) end
+
+	>>io.read (...)
+		功能：相当于io.input():read
+
+	>>io.type (obj)
+		功能：检测obj是否一个可用的文件句柄
+		返回：
+		"file"：为一个打开的文件句柄
+		"closed file"：为一个已关闭的文件句柄
+		nil:表示obj不是一个文件句柄
+
+	>>file:close()
+		功能：关闭文件
+		注：当文件句柄被垃圾收集后，
+		文件将自动关闭。句柄将变为一个不可预知的值
+
+	>>file:lines()
+		功能：返回一个迭代函数,每次调用将获得文件中的一行内容,
+		当到文件尾时，将返回nil,但不关闭文件
+		如：for line in file:lines() do body end
+
+	>>file:read(...)
+		功能：按指定的格式读取一个文件,
+		按每个格式函数将返回一个字串或数字,
+		如果不能正确读取将返回nil,
+		若没有指定格式将指默认按行方式进行读取
+		格式：
+		"*n": 读取一个数字
+		"*a": 从当前位置读取整个文件,若为文件尾，则返回空字串
+		"*l": [默认]读取下一行的内容,若为文件尾，则返回nil
+		number: 读取指定字节数的字符,若为文件尾，则返回nil;
+		如果number为0则返回空字串,若为文件尾，则返回nil;
+
+	>>file:seek([whence][,offset])
+		功能：设置和获取当前文件位置,
+		成功则返回最终的文件位置(按字节),
+		失败则返回nil加错误信息
+		参数
+		whence:
+		"set": 从文件头开始
+		"cur": 从当前位置开始[默认]
+		"end": 从文件尾开始
+		offset:默认为0
+		不带参数file:seek()则返回当前位置,
+		file:seek("set")则定位到文件头,
+		file:seek("end")则定位到文件尾并返回文件大小
+					</pre>
+			</div>
+
+			<div class="common-div">
+				<h3 id="LuaPage5">lua标准库—操作系统处理</h3>
+					<pre>
+	>>os.clock ()
+		功能：返回一个程序使用CPU时间的一个近似值
+
+	>>os.time ([table])
+		功能：按table的内容返回一个时间值(数字),
+		若不带参数则返回当前时间
+		table的字段：year, month, day, hour, min, sec, isdst
+
+	>>os.date ([format [, time]])
+		功能：返回一个按format格式化日期、时间的字串或表
+		若设置time参数，则按time指定的时间格式化，
+		否则按当前时间格式化
+		参数：
+		format:
+		"!":按格林尼治时间进行格式化。
+		"*t":将返一个带year(4位),month(1-12), 
+		day (1--31), hour (0-23), min (0-59), 
+		sec (0-61), wday (星期几, 星期天为1), 
+		yday (年内天数), and isdst (是否为日光节约时间true/false)的带键名的表;
+		若没有"*t"则返回一个按C的strftime函数格式化的字符串
+		若不带参数，则按当前系统的设置返回格式化的字符串
+
+	>>os.difftime (t2, t1)
+		功能：返回t1到t2相差的秒数
+
+	>>os.execute ([command])
+		功能：相当于C的system函数,返回系统状态码
+
+	>>os.remove (filename)
+		功能：删除文件,若函数调用失败则返加nil加错误信息
+
+	>>os.rename (oldname, newname)
+		功能：更改一个文件或目录名,若函数调用失败则返加nil加错误信息
+					</pre>
+			</div>
+		</div>
+
+		<div id="sikuli">
+			<div class="common-div">
+				<h3 id="SikuliPage1">安装开发软件</h3>
+					<pre>step1:下载eclipse
+
+step2:下载Sikuli的便携版本，不需要安装，
+需要写sikuli的环境变量，用户变量中增加变量Path，
+值为：C:\Program Files\Sikuli-IDE\libs;bin   
+增加变量：SIKULI_HOME,值为C:\Program Files\SikuliIDE\。
+路径为自己便携版sikuli的存放地址。（如果你的sikuli存放在其它路径，
+只需把C:\Program Files\改成你的SIKULI_IDE存放目录）
+可以直接引用Sikuli-IDE文件夹下的sikuli-script.jar即可加载sikuli脚本到对应工程。
+
+step3:安装open CV
+
+step4:安装JDK
+					</pre>
+			</div>
+
+			<div class="common-div">
+				<h3 id="SikuliPage2">建立工程</h3>
+				<h4>step1</h4>
+				<img src="http://1fly.oss-cn-shanghai.aliyuncs.com/image/tech/sikuli/pro1.jpg" alt="工程文件1">
+				<h4>step2</h4>
+				<img src="http://1fly.oss-cn-shanghai.aliyuncs.com/image/tech/sikuli/pro2.jpg" alt="工程文件2">
+				<h4>step3</h4>
+				<img src="http://1fly.oss-cn-shanghai.aliyuncs.com/image/tech/sikuli/pro3.jpg" alt="工程文件3">
+				<h4>step4</h4>
+				<img src="http://1fly.oss-cn-shanghai.aliyuncs.com/image/tech/sikuli/pro4.jpg" alt="工程文件4">
+				<h4>step5</h4>
+				<img src="http://1fly.oss-cn-shanghai.aliyuncs.com/image/tech/sikuli/pro5.jpg" alt="工程文件5">
+				<h4>step6</h4>
+				<img src="http://1fly.oss-cn-shanghai.aliyuncs.com/image/tech/sikuli/pro6.jpg" alt="工程文件6">
+				<h4>step7</h4>
+				<img src="http://1fly.oss-cn-shanghai.aliyuncs.com/image/tech/sikuli/pro7.jpg" alt="工程文件7">
+			</div>
+
+			<div class="common-div">
+				<h3 id="SikuliPage3">sikuli语法</h3>
+				<pre>s.click("图1")  //鼠标单击屏幕中的图1
+
+s.doubleClick("图1")   //鼠标双击击屏幕中的图1
+
+s.wait("图x",10);  //在指定时间内等待某图像出现
+
+s.waitVanish(PS,seconds)  //在指定时间(seconds)内等待图像(PS)消失,时间以秒为单位
+
+s.type(test.png,"abc");   //输入abc
+
+s.getLastMatch().right(1)//以上一个图为基准，向右偏移1
+
+s.rightClick("图1");  //鼠标右击图1
+
+s.paste("test.png","haha"); //指定的文本框中，粘贴字符串haha
+
+s.onAppear  //当某图像出现时，做相应的动作	
+
+s.onChange  //有变化后，做相应动作
+
+s.hover     //鼠标悬停
+
+s.dragDrop   //拖拽
+
+keyDown     //按键按下
+
+keyUp   //按键弹起
+	1）修饰键常量:KEY_ALT, KEY_CMD, KEY_CTRL,
+	 KEY_META, KEY_SHIFT, KEY_WIN
+	2) 特殊键:Key.ALT, Key.BACKSPACE, Key.DOWN, 
+	Key.END, Key.ENTER, Key.ESC, Key.DELETE,
+	Key.F1 ~ Key.F15, Key.HOME, Key.INSERT, 
+	Key.LEFT, Key.PAGE_DOWN, Key.PAGE_UP,
+	Key.RIGHT, Key.TAB, Key.UP
+	3)普通键 A~Z, a~z，1~10
+	注意：当需要同时按下多个键时，
+	特殊键和普通键之间使用“+”连接。
+	如type(“hello”+Key.ENTER).
+	如要同时使用修饰键，使用“，”连接，如type（Key.F4,KEY_ALT）
+
+s.exists("test.png")  //检查元素是否在屏幕上显示
+
+s.wheel("test.png",25,0) //旋转指定的图像		
+				</pre>
+			</div>
+
+			<div class="common-div">
+				<h3 id="SikuliPage4">实际应用</h3>
+				<h4>应用一：打开浏览器，检测是否有导航工具栏，最长等待10秒，以导航工具栏为基准，向右偏移300的距离，以定位到地址栏并鼠标单击将光标置入地址栏，然后在地址栏中输入wwww.baidu.com的网址，然后点击回车。</h4>
+				<pre><code>package project1;
+import org.sikuli.script.*;
+public class content1{
+public static void main(String[] args) throws FindFailed, InterruptedException
+	{
+	String imgPath="D:\\develop\\img\\";
+	Thread.sleep(20000);
+	Screen s=new Screen(); //建立屏幕的对象 
+
+	String imgpath="E:/MyWorkData/developing/AutoMakeBin/pic/"; //定义图片存放路径 
+	s.doubleClick(imgpath+"360title.png");//鼠标双击360浏览器的应用图标 
+	s.wait(imgpath+"daohang.png",10); //等待导航栏出现 
+	s.click(s.getLastMatch().right(300)); //鼠标移到地址输入栏，单击输入栏 
+	s.type("wwww.baidu.com\n"); //在焦点位置输入地址,并按键盘的回车键
+	}
+}</code>
+				</pre>
+			</div>
+
+		</div>
+	</section>
+
+	<div id="beianhao">
+		<a target="_blank" href="http://www.miitbeian.gov.cn/publish/query/indexFirst.action">粤ICP备16101450号</a>
+	</div>	
+</body>
+</html>
