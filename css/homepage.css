@@ -1,0 +1,133 @@
+@charset="utf-8";
+
+/*basics*/
+a{
+	text-decoration: none;
+}
+
+li{
+	list-style: none;
+}
+
+body{
+	background:#CCD8E0 url(http://1fly.oss-cn-shanghai.aliyuncs.com/image/bg/bg.png) repeat-x left bottom;
+}
+
+
+/*header*/
+.top{
+	background:url(http://1fly.oss-cn-shanghai.aliyuncs.com/image/bg/clouds.png) repeat-x;
+	padding: 65px 10px 0;
+}
+
+.header{
+	background: #FFF;
+	margin: 0 auto;
+	width: 780px;
+	padding: 10px 10px 5px;
+}
+
+.header .right, .header .left{
+	color: #FFF;
+}
+
+.header .left{
+	background: url(http://1fly.oss-cn-shanghai.aliyuncs.com/image/bg/header.png) no-repeat;
+	line-height: 150px;
+	width: 560px;
+	text-align: center;
+	font-size: 2em;
+	float: left;
+}
+
+.header .right{
+	float: right;
+	width: 215px;
+	height: 150px;
+	background: #A4A4A0;
+}
+
+.clearer{
+	clear: both;
+}
+
+.container{
+	background: #FFF;
+	margin: 0 auto;
+	padding: 150px 10px 10px;
+	width: 780px;
+}
+
+.navigation{
+	background: #D9E1E5;
+}
+.navigation a{
+	background:#D9E1E5;
+	line-height: 40px;
+	padding:0 30px;
+	display: block;
+	float: left;
+	color: #456;
+	border-right: solid 1px #AFBEC7;
+}
+
+.navigation a:hover{
+	background: #B3C2C7;
+	color: #234;
+}
+
+/*footer*/
+.footer{
+	height: 50px;
+	background: 
+}
+
+.footer ul{
+	float: left;
+	position: relative;
+	left: 50%;
+}
+
+.footer ul li{
+	float: left;
+	position: relative;
+	right: 50%;
+	margin-right: 50px;
+	line-height: 60px;
+	background: #fff;
+	border-radius:20px;
+}
+
+.footer ul li:hover{
+	background: #fff;
+}
+
+.footer ul:first-child img{
+	width: 20px;
+	height: 20px;
+}
+
+#wechatcode:hover{
+	position: relative;
+	transform-origin:right bottom;
+	transform:rotate(0deg) scale(10);
+}
+
+/*content*/
+.main{
+	overflow: hidden;
+}
+
+#beijing{
+	width: 760px;
+	height: 500px;
+	padding-top: 10px;
+}
+
+#lijiang,#tech,#time{
+	width: 760px;
+	height: 500px;
+	margin-top: 50px;
+	padding-top: 10px;
+}
+
