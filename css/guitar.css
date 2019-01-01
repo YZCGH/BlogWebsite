@@ -1,0 +1,31 @@
+@charset="utf-8";
+
+/*1400x480*/
+#header{
+	background: url(http://1fly.oss-cn-shanghai.aliyuncs.com/image/guitar/banner.jpg) no-repeat;
+	background-size: 100% 100%;
+	width: 100%;
+	height: 480px;
+}
+
+
+#guitar-imgInfo{
+	float: left;
+	height: 200px;
+}
+
+.song-box{  /*图像适合大小k宽为780px，长度不固定*/
+	width: 780px;
+	margin: 10px auto;
+	overflow: hidden;
+}
+
+#molihua{
+	width: 780px;
+	height: 1000px;
+}
+
+#songbie{
+	width: 780px;
+	height: 1200px;
+}
