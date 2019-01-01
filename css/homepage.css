@@ -118,13 +118,7 @@ body{
 	overflow: hidden;
 }
 
-#beijing{
-	width: 760px;
-	height: 500px;
-	padding-top: 10px;
-}
-
-#lijiang,#tech,#time{
+#lijiang,#tech,#time,#ana,#hainan,#beijing{
 	width: 760px;
 	height: 500px;
 	margin-top: 50px;
