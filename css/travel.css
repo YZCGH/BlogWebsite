@@ -30,33 +30,33 @@
 }
 
 #hainan-imgInfo{
-	float: left;
-	width: 545px;
-	height: 450px;
+	/*float: left;*/
+	width: 780px;
+	height: 300px;
 }
 
 #lijiang-imgInfo{
-	float: left;
-	width: 545px;
+	/*float: left;*/
+	width: 780px;
 	height: 300px;
 	margin-top: 10px;
 }
 
 #beijing-imgInfo{
-	float: left;
-	width: 545px;
+	/*float: left;*/
+	width: 780px;
 	height: 300px;
 	margin-top: 10px;
 }
 
 /*music widthxheight:235x200*/
-#music{
+/*#music{
 	float: left;
 	margin-top: 10px;
 	width:235;
 	height: 200;
 	color: #F45;
-}
+}*/
 
 #audio{
 	float: left;
