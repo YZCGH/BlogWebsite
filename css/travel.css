@@ -15,6 +15,13 @@
 	overflow: hidden;
 }
 
+.img-bigbox{
+	width: 1000px;
+	height: 800px;
+	margin: 10px auto;
+	overflow: hidden;
+
+}
 .null-box{  /*目前设置盒子大小为780x150px,可根据需求修改，目前用在hainan.html*/
 	width: 780px;
 	height: 150px;
@@ -23,30 +30,26 @@
 }
 
 /*内容介绍及音乐*/
-
 .contentHead p{
 	text-indent: 2em;
-	font: 1em 楷体;
+	font: 2em 楷体;
 }
 
-#hainan-imgInfo{
-	/*float: left;*/
+
+
+#hainan-imgInfo #xian-imginfo #qinghai-imginfo{
 	width: 780px;
-	height: 300px;
+	height: 1200px;
 }
 
 #lijiang-imgInfo{
-	/*float: left;*/
 	width: 780px;
-	height: 300px;
-	margin-top: 10px;
+	height: 1200px;
 }
 
 #beijing-imgInfo{
-	/*float: left;*/
 	width: 780px;
-	height: 300px;
-	margin-top: 10px;
+	height: 1200px;
 }
 
 /*music widthxheight:235x200*/

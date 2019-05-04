@@ -1,9 +1,24 @@
 @charset="utf-8";
-
 /*common*/
 *{
 	margin:0px;
 	padding: 0px;
+}
+
+.video-info{
+	margin-top: 30px;
+}
+
+.video-box{
+	margin-top: 30px;
+
+}
+/*1400x480*/
+#header{
+	background: url(http://1fly.oss-cn-shanghai.aliyuncs.com/image/bg/banner.png) no-repeat;
+	background-size: 100% 100%;
+	width: 100%;
+	height: 480px;
 }
 
 li{
@@ -51,16 +66,13 @@ a{
 	color: #FFF;
 }
 
+#weixiao-imgInfo{
+	font-size: 3em;
+}
+
 #main .container{
 	background: #FFF;
 	width: 780px;
-	height: 100%;
-	margin:0 auto;
-}
-
-#main .bigcontainer{
-	background: #FFF;
-	width: 100%;
 	height: 100%;
 	margin:0 auto;
 }

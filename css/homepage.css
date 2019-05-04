@@ -118,7 +118,8 @@ body{
 	overflow: hidden;
 }
 
-#lijiang,#tech,#time,#ana,#hainan,#beijing{
+/*封面图片宽和长为780X500*/
+#lijiang,#tech,#time,#ana,#hainan,#beijing,#guitar,#qinghai,#xian{  
 	width: 760px;
 	height: 500px;
 	margin-top: 50px;
